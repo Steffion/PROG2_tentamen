@@ -3,8 +3,8 @@ package nl.Steffion.Hangman;
 public class Main {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		Hangman hangman = new Hangman();
+		hangman.play();
 	}
 	
 }
