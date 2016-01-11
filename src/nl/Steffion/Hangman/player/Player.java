@@ -6,22 +6,26 @@ public abstract class Player {
 	private Game	game;
 	private String	name;
 					
+	public Player() {
+		game = new Game();
+	}
+	
 	public Game getGame() {
 		return game;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
-	public abstract void playGame();
 	
+	public abstract void playGame();
+
 	public void setGame(Game game) {
 		this.game = game;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }
