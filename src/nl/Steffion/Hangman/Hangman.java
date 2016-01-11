@@ -75,10 +75,10 @@ public class Hangman {
 		
 		System.out.print("De loting is verricht: ");
 		if (random.nextBoolean()) {
-			System.out.print(match.getPlayer1().getName() + " begint.");
+			System.out.println(match.getPlayer1().getName() + " begint.");
 			match.getPlayer1().playGame();
 		} else {
-			System.out.print(match.getPlayer2().getName() + " begint.");
+			System.out.println(match.getPlayer2().getName() + " begint.");
 			match.getPlayer2().playGame();
 		}
 	}
