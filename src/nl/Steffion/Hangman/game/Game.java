@@ -19,18 +19,6 @@ public class Game {
 		guessedCharacters.add(character);
 	}
 
-	public void printWord() {
-		for (char character : word.toCharArray()) {
-			if (guessedCharacters.contains(character)) {
-				System.out.print(character);
-			} else {
-				System.out.print(".");
-			}
-		}
-		
-		System.out.println();
-	}
-	
 	public void chooseRandomWord() {
 		// Get all words and put them in an ArrayList.
 		ArrayList<String> words = new ArrayList<String>();
@@ -61,4 +49,17 @@ public class Game {
 	public String getWord() {
 		return word;
 	}
+	
+	public void printWord() {
+		for (char character : word.toCharArray()) {
+			if (guessedCharacters.contains(character)) {
+				System.out.print(character);
+			} else {
+				System.out.print(".");
+			}
+		}
+		
+		System.out.println();
+	}
+	
 }
