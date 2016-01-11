@@ -42,6 +42,17 @@ public class Game {
 		word = words.get(random.nextInt(words.size() - 1));
 	}
 	
+	public int getAmountOfWrongGuessedCharacters() {
+		int amount = 0;
+		for (Character character : guessedCharacters) {
+			if (!word.contains(character.toString())) {
+				amount++;
+			}
+		}
+		
+		return amount;
+	}
+	
 	public ArrayList<Character> getGuessedCharacters() {
 		return guessedCharacters;
 	}
@@ -62,4 +73,21 @@ public class Game {
 		System.out.println();
 	}
 	
+	public void printWrongGuesses() {
+		boolean first = true;
+		System.out.print("Aantal fouten: " + getAmountOfWrongGuessedCharacters());
+
+		for (Character character : guessedCharacters) {
+			if (!word.contains(character.toString())) {
+				if (first) {
+					System.out.print(" (");
+					first = false;
+				}
+
+				System.out.print(character);
+			}
+		}
+		
+		System.out.println(first ? "" : ")");
+	}
 }
