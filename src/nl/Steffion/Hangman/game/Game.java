@@ -43,8 +43,8 @@ public class Game {
 		Random random = new Random();
 		word = words.get(random.nextInt(words.size() - 1));
 	}
-	
-	public int getAmountOfWrongGuessedCharacters() {
+
+	public int getAmountOfWrongGuesses() {
 		int amount = 0;
 		for (Character character : guessedCharacters) {
 			if (!word.contains(character.toString())) {
@@ -81,8 +81,8 @@ public class Game {
 	
 	public void printWrongGuesses() {
 		boolean first = true;
-		System.out.print("Aantal fouten: " + getAmountOfWrongGuessedCharacters());
-
+		System.out.print("Aantal fouten: " + getAmountOfWrongGuesses());
+		
 		for (Character character : guessedCharacters) {
 			if (!word.contains(character.toString())) {
 				if (first) {
