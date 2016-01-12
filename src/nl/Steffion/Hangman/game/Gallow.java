@@ -1,7 +1,7 @@
 package nl.Steffion.Hangman.game;
 
 public class Gallow {
-	public static void printGallow(int state) {
+	public void printGallow(int state) {
 		if (state < 0 || state > 10) {
 			System.out.println("Invalid state, state must be between 0 and 10!");
 			return;
