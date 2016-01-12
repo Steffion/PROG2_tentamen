@@ -61,6 +61,20 @@ public class PlayerHuman extends Player {
 			}
 		}
 		
+		if (game.wordHasBeenGuessed()) {
+			System.out.println("Het woord is geraden: " + game.getWord());
+		} else {
+			game.printWord();
+			game.printWrongGuesses();
+			game.printGallow();
+			System.out.println("Je hebt te vaak fout gegokt, het woord was: " + game.getWord());
+		}
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

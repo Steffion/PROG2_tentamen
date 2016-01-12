@@ -18,6 +18,10 @@ public abstract class Player {
 		return name;
 	}
 	
+	public int getScore() {
+		return 10 - game.getAmountOfWrongGuesses();
+	}
+
 	public abstract void playGame();
 
 	public void reset() {

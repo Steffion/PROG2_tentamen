@@ -17,14 +17,14 @@ public class Match {
 	
 	public void init() {
 		ConsoleIO io = new ConsoleIO();
-
+		
 		/*
 		 * Ask name of first player, or initiate as computer player.
 		 */
 		System.out.print("Geef de naam van speler 1 (of C voor een computer): ");
 		while (true) {
 			String answer = io.readInput();
-
+			
 			if ((answer == null) || answer.isEmpty()) {
 				System.out.println("*** Please enter something! ***");
 				continue;
@@ -35,24 +35,24 @@ public class Match {
 				player1 = new PlayerHuman();
 				player1.setName(answer);
 			}
-			
+
 			break;
 		}
-
+		
 		/*
 		 * Ask name of second player, or initiate as computer player.
 		 */
 		System.out.print("Geef de naam van speler 2 (of C voor een computer): ");
 		while (true) {
 			String answer = io.readInput();
-
+			
 			if ((answer == null) || answer.isEmpty()) {
 				System.out.println("*** Vul alstublieft iets in! ***");
 				continue;
 			} else if (answer.equalsIgnoreCase("C")) {
 				player2 = new PlayerComputer();
 				player2.setName("Computer");
-
+				
 				if (player1.getName().equals("Computer")) {
 					player1.setName("Computer (1)");
 					player2.setName("Computer (2)");
@@ -61,10 +61,9 @@ public class Match {
 				player2 = new PlayerHuman();
 				player2.setName(answer);
 			}
-			
+
 			break;
 		}
-	}
 
 		/*
 		 * Ask with how many characters the player wants to play with.
@@ -107,14 +106,33 @@ public class Match {
 		 * Choose random player to begin.
 		 */
 		Random random = new Random();
-		
+
 		System.out.print("De loting is verricht: ");
 		if (random.nextBoolean()) {
 			System.out.println(player1.getName() + " begint.");
 			player1.playGame();
+			System.out.println("Nu is het de beurt aan: " + player2.getName());
+			player2.playGame();
 		} else {
-			System.out.println(player1.getName() + " begint.");
+			System.out.println(player2.getName() + " begint.");
+			player2.playGame();
+			System.out.println("Nu is het de beurt aan: " + player1.getName());
 			player1.playGame();
 		}
+
+		Player winner;
+		String score = player1.getScore() + "-" + player2.getScore();
+
+		if (player1.getScore() == player2.getScore()) {
+			System.out.println("Er is geen winnaar! Er is gelijk gespeeld met " + score);
+			return;
+		} else if (player1.getScore() > player2.getScore()) {
+			winner = player1;
+		} else {
+			winner = player2;
+		}
+
+		System.out.println("Speler " + winner.getName() + " heeft gewonnen met " + score);
 	}
+
 }
