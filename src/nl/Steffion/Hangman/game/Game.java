@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Game {
 	
+	private int						charachterDifficulty;
 	private Gallow					gallow;
 	private ArrayList<Character>	guessedCharacters;
 	private String					word;
@@ -24,7 +25,7 @@ public class Game {
 	public void chooseRandomWord() {
 		// Get all words and put them in an ArrayList.
 		ArrayList<String> words = new ArrayList<String>();
-		File wordsFile = new File("resource" + File.separator + "woordenlijst_12.txt");
+		File wordsFile = new File("resource" + File.separator + "woordenlijst_" + charachterDifficulty + ".txt");
 
 		try {
 			Scanner wordsList = new Scanner(wordsFile);
@@ -95,6 +96,10 @@ public class Game {
 		}
 
 		System.out.println(first ? "" : ")");
+	}
+	
+	public void setCharachterDifficulty(int charachterDifficulty) {
+		this.charachterDifficulty = charachterDifficulty;
 	}
 	
 	public boolean wordHasBeenGuessed() {

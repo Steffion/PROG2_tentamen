@@ -7,9 +7,14 @@ import nl.Steffion.Hangman.player.PlayerComputer;
 import nl.Steffion.Hangman.player.PlayerHuman;
 
 public class Match {
+	private int		charachterDifficulty;
 	private Player	player1;
 	private Player	player2;
-
+					
+	public int getCharachterDifficulty() {
+		return charachterDifficulty;
+	}
+	
 	public void init() {
 		ConsoleIO io = new ConsoleIO();
 
@@ -61,6 +66,34 @@ public class Match {
 		}
 	}
 
+		/*
+		 * Ask with how many characters the player wants to play with.
+		 */
+		System.out.print("Met hoeveel karakters wil je het spel spelen? [10|11|12|13]: ");
+		while (true) {
+			switch (io.readInput()) {
+				case "10":
+					charachterDifficulty = 10;
+					break;
+				case "11":
+					charachterDifficulty = 11;
+					break;
+				case "12":
+					charachterDifficulty = 12;
+					break;
+				case "13":
+					charachterDifficulty = 13;
+					break;
+				default:
+					System.out.println("*** Vul alstublieft 10, 11, 12 of 13 in! ***");
+					continue;
+			}
+
+			player1.getGame().setCharachterDifficulty(charachterDifficulty);
+			player2.getGame().setCharachterDifficulty(charachterDifficulty);
+			break;
+		}
+	}
 	public void start() {
 		/*
 		 * Choose random player to begin.
