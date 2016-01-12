@@ -53,20 +53,12 @@ public class Match {
 					player2.setName("Computer (2)");
 				}
 			} else {
-				setPlayer2(new PlayerHuman());
+				player2 = new PlayerHuman();
 				player2.setName(answer);
 			}
 			
 			break;
 		}
-	}
-
-	public void setPlayer1(Player player1) {
-		this.player1 = player1;
-	}
-	
-	public void setPlayer2(Player player2) {
-		this.player2 = player2;
 	}
 
 	public void start() {
