@@ -55,10 +55,6 @@ public class Game {
 		return amount;
 	}
 
-	public Gallow getGallow() {
-		return gallow;
-	}
-
 	public ArrayList<Character> getGuessedCharacters() {
 		return guessedCharacters;
 	}
@@ -66,7 +62,11 @@ public class Game {
 	public String getWord() {
 		return word;
 	}
-
+	
+	public void printGallow() {
+		gallow.printGallow(getAmountOfWrongGuesses());
+	}
+	
 	public void printWord() {
 		for (char character : word.toCharArray()) {
 			if (guessedCharacters.contains(character)) {
@@ -78,7 +78,7 @@ public class Game {
 
 		System.out.println();
 	}
-	
+
 	public void printWrongGuesses() {
 		boolean first = true;
 		System.out.print("Aantal fouten: " + getAmountOfWrongGuesses());
@@ -95,5 +95,15 @@ public class Game {
 		}
 
 		System.out.println(first ? "" : ")");
+	}
+	
+	public boolean wordHasBeenGuessed() {
+		for (char character : word.toCharArray()) {
+			if (!guessedCharacters.contains(character)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
