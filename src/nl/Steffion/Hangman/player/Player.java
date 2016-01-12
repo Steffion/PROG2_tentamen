@@ -20,6 +20,10 @@ public abstract class Player {
 	
 	public abstract void playGame();
 
+	public void reset() {
+		game = new Game();
+	}
+
 	public void setGame(Game game) {
 		this.game = game;
 	}

@@ -94,6 +94,14 @@ public class Match {
 			break;
 		}
 	}
+	
+	public void reset() {
+		player1.reset();
+		player2.reset();
+		player1.getGame().setCharachterDifficulty(charachterDifficulty);
+		player2.getGame().setCharachterDifficulty(charachterDifficulty);
+	}
+	
 	public void start() {
 		/*
 		 * Choose random player to begin.
