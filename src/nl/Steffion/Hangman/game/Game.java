@@ -1,19 +1,18 @@
 package nl.Steffion.Hangman.game;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
-public class Game {
-	
-	private int						charachterDifficulty;
+import nl.Steffion.Hangman.player.Player;
+
+public abstract class Game {
+
+	protected int					charachterDifficulty;
 	private Gallow					gallow;
-	private ArrayList<Character>	guessedCharacters;
-	private String					word;
-
+	protected ArrayList<Character>	guessedCharacters;
+	protected String				word;
+									
 	public Game() {
+		word = "";
 		gallow = new Gallow();
 		guessedCharacters = new ArrayList<Character>();
 	}
@@ -22,29 +21,6 @@ public class Game {
 		guessedCharacters.add(character);
 	}
 	
-	public void chooseRandomWord() {
-		// Get all words and put them in an ArrayList.
-		ArrayList<String> words = new ArrayList<String>();
-		File wordsFile = new File("resource" + File.separator + "woordenlijst_" + charachterDifficulty + ".txt");
-
-		try {
-			Scanner wordsList = new Scanner(wordsFile);
-
-			while (wordsList.hasNext()) {
-				words.add(wordsList.nextLine());
-			}
-
-			wordsList.close();
-		} catch (FileNotFoundException e) {
-			System.out.println(e.getLocalizedMessage() + " Contact the developer for asstiance!");
-			System.exit(1);
-		}
-		
-		// Get a random word from the list.
-		Random random = new Random();
-		word = words.get(random.nextInt(words.size() - 1));
-	}
-
 	public int getAmountOfWrongGuesses() {
 		int amount = 0;
 		for (Character character : guessedCharacters) {
@@ -52,63 +28,40 @@ public class Game {
 				amount++;
 			}
 		}
-
+		
 		return amount;
 	}
-
-	public ArrayList<Character> getGuessedCharacters() {
-		return guessedCharacters;
-	}
-
-	public String getWord() {
-		return word;
-	}
 	
+	public abstract void playGame(Player player);
+
 	public void printGallow() {
 		gallow.printGallow(getAmountOfWrongGuesses());
 	}
-	
-	public void printWord() {
-		for (char character : word.toCharArray()) {
-			if (guessedCharacters.contains(character)) {
-				System.out.print(character);
-			} else {
-				System.out.print(".");
-			}
-		}
 
-		System.out.println();
-	}
+	public abstract void printWord();
 
 	public void printWrongGuesses() {
 		boolean first = true;
 		System.out.print("Aantal fouten: " + getAmountOfWrongGuesses());
-		
+
 		for (Character character : guessedCharacters) {
 			if (!word.contains(character.toString())) {
 				if (first) {
 					System.out.print(" (");
 					first = false;
 				}
-				
+
 				System.out.print(character);
 			}
 		}
-
+		
 		System.out.println(first ? "" : ")");
 	}
-	
+
 	public void setCharachterDifficulty(int charachterDifficulty) {
 		this.charachterDifficulty = charachterDifficulty;
 	}
+
+	public abstract boolean wordHasBeenGuessed();
 	
-	public boolean wordHasBeenGuessed() {
-		for (char character : word.toCharArray()) {
-			if (!guessedCharacters.contains(character)) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
 }
