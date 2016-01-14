@@ -15,8 +15,8 @@ public class ConsoleIO {
 		try {
 			return br.readLine();
 		} catch (IOException e) {
-			e.printStackTrace();
-			return "ERROR";
+			System.out.println("IOException: " + e.getLocalizedMessage() + ". Contact the developer for asstiance!");
+			return "IOException";
 		}
 	}
 }
