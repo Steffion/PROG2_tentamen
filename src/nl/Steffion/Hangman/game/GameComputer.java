@@ -1,28 +1,71 @@
 package nl.Steffion.Hangman.game;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
 
 import nl.Steffion.Hangman.ConsoleIO;
 import nl.Steffion.Hangman.player.Player;
 
 public class GameComputer extends Game {
+	private HashMap<String, Boolean> words;
+	
+	public GameComputer() {
+		words = new HashMap<String, Boolean>();
+	}
+
+	private void initWords() {
+		File wordsFile = new File("resource" + File.separator + "woordenlijst_" + charachterDifficulty + ".txt");
+		
+		try {
+			Scanner wordsList = new Scanner(wordsFile);
+			
+			while (wordsList.hasNext()) {
+				words.put(wordsList.nextLine(), true);
+			}
+			
+			wordsList.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(
+					"FileNotFoundException: " + e.getLocalizedMessage() + ". Contact the developer for asstiance!");
+			System.exit(1);
+		}
+	}
 
 	private char nextGuess() {
-		Random random = new Random();
-		
-		while (true) {
-			char randomChar = Character.toChars(random.nextInt(('Z' + 1) - 'A') + 'A')[0];
-			if (guessedCharacters.contains(randomChar)) {
+		for (String word : words.keySet()) {
+			if (words.get(word) == false) {
 				continue;
 			}
 
-			return randomChar;
+			if (!word.matches(this.word.replaceAll("\\.", ".*[^-" + getWrongGuessedCharacters() + "]"))) {
+				words.put(word, false);
+			}
 		}
+
+		for (String word : words.keySet()) {
+			if (words.get(word) == false) {
+				continue;
+			}
+
+			for (char character : word.toCharArray()) {
+				if (!guessedCharacters.contains(character)) {
+					return character;
+				}
+			}
+		}
+		
+		System.out.println("De computer denkt dat je vals speelt! Hij geeft het op...");
+		System.exit(1);
+		return '-';
 	}
 
 	@Override
 	public void playGame(Player player) {
 		ConsoleIO io = new ConsoleIO();
+		initWords();
 		
 		for (int i = charachterDifficulty; i > 0; i--) {
 			word = word + ".";
@@ -111,18 +154,13 @@ public class GameComputer extends Game {
 			
 		}
 
-		for (char character2 : word.toCharArray()) {
-			if (character2 == '.') {
-			}
-		}
-		
 		if (wordHasBeenGuessed()) {
-			System.out.println("Het woord is geraden.");
+			System.out.println("Het woord is geraden: " + word);
 		} else {
 			printWord();
 			printWrongGuesses();
 			printGallow();
-			System.out.println("De computer hebt te vaak fout gegokt.");
+			System.out.println("De computer heeft te vaak fout gegokt, je was hem te slim af!");
 		}
 		
 		try {

@@ -12,9 +12,9 @@ public abstract class Game {
 	protected String				word;
 									
 	public Game() {
-		word = "";
 		gallow = new Gallow();
 		guessedCharacters = new ArrayList<Character>();
+		word = "";
 	}
 	
 	public void addGuessedCharacter(Character character) {
@@ -30,6 +30,17 @@ public abstract class Game {
 		}
 		
 		return amount;
+	}
+
+	public String getWrongGuessedCharacters() {
+		String chars = "";
+		for (Character character : guessedCharacters) {
+			if (!word.contains(character.toString())) {
+				chars += character;
+			}
+		}
+
+		return chars;
 	}
 	
 	public abstract void playGame(Player player);
