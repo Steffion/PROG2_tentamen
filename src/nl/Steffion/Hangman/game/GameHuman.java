@@ -9,8 +9,17 @@ import java.util.Scanner;
 import nl.Steffion.Hangman.ConsoleIO;
 import nl.Steffion.Hangman.player.Player;
 
+/**
+ * 
+ * @author Steffion (Stef de Goey) 2016
+ *
+ */
+
 public class GameHuman extends Game {
 	
+	/**
+	 * Chooses a random word and puts it in the word String.
+	 */
 	private void chooseRandomWord() {
 		// Get all words and put them in an ArrayList.
 		ArrayList<String> words = new ArrayList<String>();

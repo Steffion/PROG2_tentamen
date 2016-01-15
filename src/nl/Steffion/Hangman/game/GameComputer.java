@@ -8,6 +8,12 @@ import java.util.Scanner;
 import nl.Steffion.Hangman.ConsoleIO;
 import nl.Steffion.Hangman.player.Player;
 
+/**
+ * 
+ * @author Steffion (Stef de Goey) 2016
+ *
+ */
+
 public class GameComputer extends Game {
 	private HashMap<String, Boolean> words;
 
@@ -15,6 +21,9 @@ public class GameComputer extends Game {
 		words = new HashMap<String, Boolean>();
 	}
 	
+	/**
+	 * Reads the words into the HashMap to be able to find the best words.
+	 */
 	private void initWords() {
 		File wordsFile = new File("resource" + File.separator + "woordenlijst_" + charachterDifficulty + ".txt");
 
@@ -33,6 +42,12 @@ public class GameComputer extends Game {
 		}
 	}
 	
+	
+	/**
+	 * Guess the best possible next character and return it as a char.
+	 * 
+	 * @return char of best possible character
+	 */
 	private char nextGuess() {
 		for (String word : words.keySet()) {
 			if (words.get(word) == false) {
@@ -170,6 +185,9 @@ public class GameComputer extends Game {
 		}
 	}
 
+	/**
+	 * Prints the last word remaining if there is only one possibility left.
+	 */
 	private void printLastWordRemaining() {
 		int wordsRemaining = 0;
 		String lastWordRemaining = "";

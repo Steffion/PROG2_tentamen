@@ -1,6 +1,20 @@
 package nl.Steffion.Hangman.game;
 
+/**
+ * This class is used to display the gallow.
+ * 
+ * @author Steffion (Stef de Goey) 2016
+ *
+ */
+
 public class Gallow {
+	
+	/**
+	 * Display the gallow.
+	 * The state has to be between 1 and 10.
+	 * 
+	 * @param state - int between 1 and 10
+	 */
 	public void printGallow(int state) {
 		if (state < 0 || state > 10) {
 			System.out.println("Invalid state, state must be between 0 and 10!");
@@ -99,4 +113,5 @@ public class Gallow {
 				
 		}
 	}
+	
 }

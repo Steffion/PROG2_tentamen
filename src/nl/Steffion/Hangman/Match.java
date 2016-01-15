@@ -6,15 +6,30 @@ import nl.Steffion.Hangman.player.Player;
 import nl.Steffion.Hangman.player.PlayerComputer;
 import nl.Steffion.Hangman.player.PlayerHuman;
 
+/**
+ * 
+ * @author Steffion (Stef de Goey) 2016
+ *
+ */
+
 public class Match {
 	private int		charachterDifficulty;
 	private Player	player1;
 	private Player	player2;
 					
+	/**
+	 * Get the length of the words used in the game.
+	 * Referred as 'difficulty'.
+	 * 
+	 * @return length of word
+	 */
 	public int getCharachterDifficulty() {
 		return charachterDifficulty;
 	}
 	
+	/**
+	 * Request names from players and request the difficulty.
+	 */
 	public void init() {
 		ConsoleIO io = new ConsoleIO();
 		
@@ -94,6 +109,10 @@ public class Match {
 		}
 	}
 	
+	/**
+	 * Resets the match.
+	 * When you want to play another match.
+	 */
 	public void reset() {
 		player1.reset();
 		player2.reset();
@@ -101,6 +120,9 @@ public class Match {
 		player2.getGame().setCharachterDifficulty(charachterDifficulty);
 	}
 	
+	/**
+	 * Starts the match.
+	 */
 	public void start() {
 		/*
 		 * Choose random player to begin.
@@ -120,6 +142,9 @@ public class Match {
 			player1.playGame();
 		}
 
+		/*
+		 * Display winner and their score.
+		 */
 		Player winner;
 		String score = player1.getScore() + "-" + player2.getScore();
 

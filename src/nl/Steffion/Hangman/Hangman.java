@@ -1,5 +1,11 @@
 package nl.Steffion.Hangman;
 
+/**
+ * 
+ * @author Steffion (Stef de Goey) 2016
+ *
+ */
+
 public class Hangman {
 	
 	private Match match;
@@ -8,6 +14,9 @@ public class Hangman {
 		match = new Match();
 	}
 	
+	/**
+	 * Starts the game.
+	 */
 	public void play() {
 		System.out.println("Welkom bij Galgje!");
 		System.out.println();
@@ -39,6 +48,9 @@ public class Hangman {
 		}
 	}
 	
+	/**
+	 * Reset game and starts the game.
+	 */
 	public void playAgain() {
 		match.reset();
 		match.start();
