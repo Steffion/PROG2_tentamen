@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nl.Steffion.Hangman.player.Player;
 
 /**
+ * The superclass for the game.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

@@ -1,6 +1,7 @@
 package nl.Steffion.Hangman;
 
 /**
+ * The main class of the project.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

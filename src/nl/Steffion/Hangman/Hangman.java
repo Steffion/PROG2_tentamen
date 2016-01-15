@@ -1,6 +1,7 @@
 package nl.Steffion.Hangman;
 
 /**
+ * The main class for the game.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

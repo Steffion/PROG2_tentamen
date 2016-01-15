@@ -10,6 +10,7 @@ import nl.Steffion.Hangman.ConsoleIO;
 import nl.Steffion.Hangman.player.Player;
 
 /**
+ * The human class of the game.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

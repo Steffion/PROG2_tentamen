@@ -7,6 +7,8 @@ import nl.Steffion.Hangman.player.PlayerComputer;
 import nl.Steffion.Hangman.player.PlayerHuman;
 
 /**
+ * The Match class.
+ * This class requests the names and tells what player starts.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

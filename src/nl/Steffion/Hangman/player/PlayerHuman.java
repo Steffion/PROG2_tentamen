@@ -4,6 +4,7 @@ import nl.Steffion.Hangman.game.Game;
 import nl.Steffion.Hangman.game.GameHuman;
 
 /**
+ * The human player.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

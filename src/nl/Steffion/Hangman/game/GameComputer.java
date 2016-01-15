@@ -9,6 +9,7 @@ import nl.Steffion.Hangman.ConsoleIO;
 import nl.Steffion.Hangman.player.Player;
 
 /**
+ * The computer version of the game.
  * 
  * @author Steffion (Stef de Goey) 2016
  *

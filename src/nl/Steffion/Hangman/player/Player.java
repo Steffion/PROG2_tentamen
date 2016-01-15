@@ -3,6 +3,7 @@ package nl.Steffion.Hangman.player;
 import nl.Steffion.Hangman.game.Game;
 
 /**
+ * The superclass of the player.
  * 
  * @author Steffion (Stef de Goey) 2016
  *
